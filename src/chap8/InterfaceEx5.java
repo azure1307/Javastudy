@@ -71,8 +71,9 @@ public class InterfaceEx5 {
 			if (u instanceof Repairable) {
 //			if (!(u instanceof Marine)) {
 				s.repair((Repairable)u); //		
-				
 			}
 		}
+		
+		System.out.println("commit test");
 	}
 }
