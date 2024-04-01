@@ -73,7 +73,5 @@ public class InterfaceEx5 {
 				s.repair((Repairable)u); //		
 			}
 		}
-		
-		System.out.println("commit test");
 	}
 }
