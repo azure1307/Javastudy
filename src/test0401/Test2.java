@@ -10,7 +10,6 @@ TV를 끕니다.
 Audio를 켭니다.
 Audio의 볼륨을 20으로 설정합니다.
 Audio를 끕니다.
-
  */
 interface RemoteControl {
 	void turnOn();

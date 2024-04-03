@@ -19,5 +19,6 @@ public class Test3 {
 	public static void main(String[] args) {
 		Beta b = getIt();
 		System.out.println(((Alpha)b).testIt());
+//		System.out.println(b.testIt()); //Beta 타입의 참조변수로 참조 불가
 	}
 }
