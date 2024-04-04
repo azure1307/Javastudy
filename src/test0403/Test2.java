@@ -7,9 +7,9 @@ method1 메서드에서 value 값을 출력하여 다음의 결과가 나오도�
 20    => 내부클래스 변수 value
 10    => 외부클래스 변수 value
 */
-class Outer2 {
+class Outer2 { //외부클래스
 	int value = 10;
-	class Inner {
+	class Inner { //인스턴스 내부클래스
 		int value = 20;
 		void method1() {
 			int value = 30;
@@ -22,6 +22,7 @@ class Outer2 {
 
 public class Test2 {
 	public static void main(String[] args) {
+		//new Outer2().new Inner().method1();
 		Outer2.Inner o2i = new Outer2().new Inner();
 		o2i.method1();
 	}
