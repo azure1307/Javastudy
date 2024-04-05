@@ -29,18 +29,16 @@ public class Test2 {
 		while (true) {
 			try {
 				int unum = sc.nextInt();
+				cnt++;
 				if (unum>100 || unum<1) {
 					throw new MyInputNumberException("1부터 100 사이의 숫자만 입력하세요.");
 				}
 				
 				if (unum > cnum) {
 					System.out.println(unum+"보다 작은 숫자입니다.");
-					cnt++;
 				} else if (unum < cnum) {
 					System.out.println(unum+"보다 큰 숫자입니다.");
-					cnt++;
 				} else {
-					cnt++;
 					System.out.println("정답입니다. "+cnt+"번만에 맞추셨습니다.");
 					break;
 				}
@@ -49,7 +47,6 @@ public class Test2 {
 				cnt++;
 			} catch (MyInputNumberException e) {
 				System.out.println(e.getMessage());
-				cnt++;
 			}
 		}
 	}

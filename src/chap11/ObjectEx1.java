@@ -11,6 +11,7 @@ class Equal {
 	Equal(int value) {
 		this.value = value;
 	}
+	// 같은 내용인 경우 결과: true
 	@Override
 	public boolean equals(Object obj) {
 		// obj가 참조하고 있는게 Equal 객체일 경우
@@ -21,6 +22,11 @@ class Equal {
 		} else {
 			return false;
 		}
+	}
+	// 같은 내용인 경우 리턴값이 동일
+	@Override
+	public int hashCode() {
+		return value;
 	}
 	
 }
