@@ -19,7 +19,8 @@ class Student {
 	@Override
 	public boolean equals(Object obj) {
 		Student s = (Student)obj;
-		if (studno==s.studno && name==s.name) {
+		// name은 문자열이라 equals 메서드 사용
+		if (studno==s.studno && name.equals(s.name)) {
 			return true; 
 		} else {
 			return false;
@@ -48,6 +49,11 @@ public class Test1 {
 		} else {
 			System.out.println(s1+"과 "+s2+"학생은 다른 학생입니다.");
 		}
+		
+		//s1 객체의 클래스명 출력
+		System.out.println(s1.getClass().getName());
+		
+		
 
 	}
 }

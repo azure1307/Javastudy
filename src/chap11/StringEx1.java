@@ -7,12 +7,16 @@ package chap11;
  * 		  String s1 = "문자열";
  * 		  String s2 = new String("문자열");
  *  	- final 클래스. 다른 클래스의 부모 클래스가 될 수 없음. 
+ *  
+ *		  비교연산자로 내용을 비교할 수 없다. 
  */
 public class StringEx1 {
 	public static void main(String[] args) {
 		String s1 = "abc";
 		String s2 = "abc";
+		// 참조변수 비교
 		System.out.println("s1==s2 : "+(s1==s2));
+		// 내용 비교
 		System.out.println("s1.equals(s2) : "+(s1.equals(s2)));
 		System.out.println();
 		

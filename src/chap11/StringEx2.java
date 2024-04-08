@@ -10,7 +10,7 @@ public class StringEx2 {
 		System.out.println("s.charAt(4) : "+s.charAt(4)); // E
 		
 		/*
-		 * s.compareTo(문자열): 정렬에 사용되는 메서드
+		 * s.compareTo(문자열): 정렬에 사용되는 메서드. 둘을 비교해서 아스키값의 차이를 반환함
 		 * 			결과 양수: s문자열이 뒷쪽
 		 * 			결과 음수: s문자열이 앞쪽  
 		 */
@@ -19,6 +19,7 @@ public class StringEx2 {
 		System.out.println("s.compareTo(\"AAA\") : "+s.compareTo("AAA"));
 		
 		// s.compareToIgnoreCase(문자열): 대소문자 상관없이 정렬
+		// 근데 비교하려는 문자랑 기존 문자가 포함관계일 경우 길이 차이 출력
 		System.out.println("s.compareToIgnoreCase(\"abc\") : "+s.compareToIgnoreCase("abc"));
 		
 		// s.endsWith(문자열): s 문자열의 끝이 GH로 끝나는지 boolean으로 리턴
@@ -30,18 +31,20 @@ public class StringEx2 {
 		// s.equals(문자열): s 문자열이 "ABCDEFG" 와 같은지 여부
 		System.out.println("s.equals(\"ABCDEFGH\"): " +s.equals("ABCDEFGH"));
 
-		// s.equals(문자열): s 문자열이 대소문자 구분없이 "abcdefg"와 같은지 여부
+		// s.equalsIgnoreCase(문자열): s 문자열이 대소문자 구분없이 "abcdefg"와 같은지 여부
 		System.out.println("s.equalsIgnoreCase(\"ABCDEFGH\"): " +s.equalsIgnoreCase("abcdefg"));
 		
 		//s.getBytes: s 문자열을 byte형 배열로 리턴
 		byte[] barr = s.getBytes();
 		for (byte b:barr) {
-			System.out.print((char)b);
+			// String을 byte 값으로 바꾼걸 char로 바꿔서 출력
+			System.out.print((char)b+", ");
 		}
 		System.out.println();
 		
 		char[] carr = s.toCharArray();
 		for (char c:carr) {
+			// String을 char로 바꿔서 출력
 			System.out.print(c);
 		}
 		System.out.println();
@@ -53,7 +56,7 @@ public class StringEx2 {
 		System.out.println("s.indexOf(\"is\") : "+s.indexOf("is")); // 2
 		
 		// s.indexOf('i',3): 3번 인덱스 이후의 i문자의 인덱스값 반환
-		System.out.println("s.indexOf('i',3) : "+s.indexOf('i',3)); // 5. 인덱스는 처음부터
+		System.out.println("s.indexOf('i',3) : "+s.indexOf('i',3)); // 5. 인덱스는 처음부터 셈
 		
 		// s.lastIndexOf('i'): i문자가 마지막으로 나타나는 인덱스 리턴
 		System.out.println("s.lastIndexOf('i') : "+s.lastIndexOf('i')); // 13

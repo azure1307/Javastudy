@@ -19,5 +19,11 @@ public class Test3 {
 		for (int i=0;i<arr1.length;i++) {
 			System.out.println(arr1[i]+"=>"+arr2[i].trim());
 		}
+		System.out.println();
+		
+		arr2 = s2.split("\\s*,\\s*");		
+		for (int i=0;i<arr1.length;i++) {
+			System.out.println(arr1[i]+"=>"+arr2[i]);
+		}
 	}
 }

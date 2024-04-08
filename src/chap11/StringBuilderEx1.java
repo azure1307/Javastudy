@@ -11,9 +11,10 @@ public class StringBuilderEx1 {
 		StringBuilder sb1 = new StringBuilder("abc");
 		StringBuilder sb2 = new StringBuilder("abc");
 		System.out.println("sb1==sb2 : "+(sb1==sb2)); // 참조변수비교
-		System.out.println("sb1.equals(sb2) : "+(sb1.equals(sb2))); // 내용비교. 근데 안됨
+		// 내용비교. String이었으면 됐는데 얘는 안됨. equals 메소드를 오버라이딩하지 않아서
+		System.out.println("sb1.equals(sb2) : "+(sb1.equals(sb2))); 
 		
-		 // 내용비교. sb1.toString() 과 sb2.toString() 을 비교해야함
+		// 그래서 비교하려면 toString() 써서 문자열로 변환 후 equals()로 비교해야 한다
 		System.out.println("sb1.toString().equals(sb2.toString()) : "
 		 +(sb1.toString().equals(sb2.toString())));
 	}
