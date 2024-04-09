@@ -26,32 +26,51 @@ public class Test1 {
 	private static String format(String str, int len, int align) {
 		StringBuilder sb = new StringBuilder();
 		int cha = Math.abs(len-str.length());
-		String sb2 = null;
-		if (str.length() < len) {
-			if (align == 0) {
-				sb.append(str);
-				for (int i=0;i<cha;i++) {
-					sb.append(" ");
-				}
-			} else if (align == 1) {
-				for (int i=0;i<cha/2;i++) {
-					sb.append(" ");
-				}
-				sb.append(str);
-				for (int i=0;i<cha/2;i++) {
-					sb.append(" ");
-				}
-			} else if (align == 2) {
-				for (int i=0;i<cha;i++) {
-					sb.append(" ");
-				}
-				sb.append(str);
-			}
-			sb2 = sb.toString();
-		} else if (str.length() > len) {
-			// 0번 인덱스부터 len-1 인덱스까지
-			sb2 = str.substring(0, len);
-		} 
-		return sb2;
+		
+		// 입력받은 길이만큼 공백으로 빈칸 채우기
+		for (int i=0;i<len;i++) {
+			sb.append(" ");
+		}
+		
+		// str이 더 길면 substring으로 잘라서 출력
+		if (len<str.length()) {
+			return str.substring(0,len);
+		}
+		// 정렬값에 따라 해당하는 부분 replace() 메서드로 교체
+		switch(align) {
+			case 0 :sb.replace(0,str.length(),str); break;
+			case 1 :sb.replace(cha/2,cha/2+str.length(),str); break;
+			case 2 :sb.replace(len-str.length(),len,str); break;
+		}
+		return sb.toString();
+		
+		
+//		String sb2 = null;
+//		if (str.length() < len) {
+//			if (align == 0) {
+//				sb.append(str);
+//				for (int i=0;i<cha;i++) {
+//					sb.append(" ");
+//				}
+//			} else if (align == 1) {
+//				for (int i=0;i<cha/2;i++) {
+//					sb.append(" ");
+//				}
+//				sb.append(str);
+//				for (int i=0;i<cha/2;i++) {
+//					sb.append(" ");
+//				}
+//			} else if (align == 2) {
+//				for (int i=0;i<cha;i++) {
+//					sb.append(" ");
+//				}
+//				sb.append(str);
+//			}
+//			sb2 = sb.toString();
+//		} else if (str.length() > len) {
+//			// 0번 인덱스부터 len-1 인덱스까지
+//			sb2 = str.substring(0, len);
+//		} 
+//		return sb2;
 	}
 }

@@ -24,12 +24,16 @@ public class Test4 {
 		int year = sc.nextInt();
 //		System.out.println(year);
 		
+		// f = 입력받을 데이터의 형식
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 		for (int i=1;i<=12;i++) {
+			// 매달 1일
 			Date day1 = f.parse(String.format("%4d-%02d-01",year,i));
+			// 매달 마지막일 (다음달 1일 날짜값에서 하루 분량의 날짜값 빼기)
 			Date day2 = f.parse(String.format("%4d-%02d-01",year,i+1));
 			day2.setTime(day2.getTime()-(1000*60*60*24));
 			
+			// f2 = 출력할 데이터의 형식
 			SimpleDateFormat f2 = new SimpleDateFormat("yyyy-MM-dd E요일");
 			System.out.print(f2.format(day1));
 			System.out.print(", ");
