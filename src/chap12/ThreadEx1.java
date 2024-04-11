@@ -2,7 +2,7 @@ package chap12;
 /*
  * Thread 생성
  * 1. Thread 클래스를 상속받기
- * 2. run() 오버라이딩 : 
+ * 2. run() 오버라이딩 : 스레드가 실행해야 하는 기능
  */
 class Thread1 extends Thread {
 	Thread1(String name) {
