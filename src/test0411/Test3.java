@@ -1,8 +1,5 @@
 package test0411;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /*
  * 생산자 스레드, 소비자 스레드 문제
  * CarMarket 클래스 : 자동차 판매소
@@ -68,73 +65,74 @@ import java.util.List;
     20:Seller=>벤츠판매함
 */
 class CarMarket {
-	String carName = null;
-	String[] data = {"소나타","K9","그랜저","산타페","티볼리"};
+	String carName;
 	String getCar() {
-		return data[(int)(Math.random()*data.length)];
+		String[] cars = {"소나타","K9","그랜저","산타페","티볼리","BMW","벤츠"};
+		return cars[(int)(Math.random()*cars.length)];
 	}
-	synchronized String push() {
-		CarMarket c = new CarMarket();
-		carName = c.getCar();
+	synchronized String push(int i) {
+		// 차 공급해야되는데 차가 있음 -> 기다림
+		while(carName != null) { // push() 호출안됨
+			try {
+				wait(); // 현재 실행중인 스레드를 wait 상태로 바꿈. 동기화영역에서만 호출가능
+			} catch(InterruptedException e) {}
+		}
+		// 차가 없음
+		notifyAll(); // 현재 wait() 상태인 모든 스레드를 Runnable 상태로 변경. 동기화영역에서만 호출가능
+		carName = getCar(); // 공급
+		System.out.println(i+":"+Thread.currentThread().getName() + "=>" + carName + "생산함");
 		return carName;
 	}
-	synchronized String pop() {
+	synchronized String pop(int i) {
+		// 차 팔아야되는데 차가 없음 -> 기다림
+		while(carName == null) { // pop() 호출안됨
+			try {
+				wait(); // 현재 실행중인 스레드를 wait 상태로 바꿈. 동기화영역에서만 호출가능
+			} catch(InterruptedException e) {}
+		}
+		// 차가 있음
+		notifyAll(); // 현재 wait() 상태인 모든 스레드를 Runnable 상태로 변경. 동기화영역에서만 호출가능
+		String result = carName; // 판매
+		System.out.println(i+":"+Thread.currentThread().getName() + "=>" + carName + "판매함");
 		carName = null;
-		return carName;
+		return result;
 	}
 }
-class Seller extends Thread {
+class Seller extends Thread { // 소비자 스레드
 	CarMarket cm;
 	Seller(CarMarket cm) {
 		super("Seller");
 		this.cm = cm;
 	}
 	public void run() {
-		// 차 팔아야되는데 차가 없음 -> 기다림
-		while (cm.carName == null) {
+		for(int i=0;i<20;i++) {
+			cm.pop(i+1);
 			try {
-				wait();
+				sleep((int)(Math.random() * 2000)); // 최대 2초까지 대기
 			} catch (InterruptedException e) {}
-		}
-		// 차가 있음 -> 팜 -> 최대 2초까지 대기
-		// 일단 2번만
-		for (int i=0;i<2;i++) {
-			cm.pop();
-			System.out.println(i+":"+Thread.currentThread().getName()+"=>"+cm.carName+"판매함");
-			try {
-				sleep((int)(Math.random()*2000));
-			} catch (InterruptedException e) {}			
 		}
 	}
 }
-class Producer extends Thread {
+class Producer extends Thread { // 생산자 스레드
 	CarMarket cm;
 	Producer(CarMarket cm) {
 		super("Producer");
 		this.cm = cm;
 	}
 	public void run() {
-		// 차 공급해야되는데 차가 있음 -> 기다림
-		while (cm.carName != null) {
+		for(int i=0;i<20;i++) {
+			cm.push(i+1);
 			try {
-				wait();
+				sleep((int)(Math.random() * 5000)); // 최대 5초까지 대기
 			} catch (InterruptedException e) {}
-		}
-		// 차가 없음 -> 공급함 -> 최대 5초까지 대기
-		for (int i=0;i<2;i++) {
-			cm.push();
-			System.out.println(i+":"+Thread.currentThread().getName()+"=>"+cm.carName+"생산함");
-			try {
-				sleep((int)(Math.random()*5000));
-			} catch (InterruptedException e) {}			
 		}
 	}
 }
 public class Test3 {
 	public static void main(String[] args) {
-		CarMarket cm = new CarMarket();
-		Thread p = new Producer(cm);
+		CarMarket cm = new CarMarket(); // 공유객체
 		Thread s = new Seller(cm);
-		p.start(); s.start(); 
+		Thread p = new Producer(cm);
+		s.start(); p.start(); 
 	}
 }

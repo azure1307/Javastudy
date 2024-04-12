@@ -26,6 +26,7 @@ public class Test1 {
 		PrintRunnable1 pr1 = new PrintRunnable1('A');
 		PrintRunnable1 pr2 = new PrintRunnable1('B');
 		PrintRunnable1 pr3 = new PrintRunnable1('C');
+//		Thread t1 = new Thread(new PrintRunnable1('A')); 이렇게하면 pr1 참조변수 안만들어도됨
 		Thread t1 = new Thread(pr1);
 		Thread t2 = new Thread(pr2);
 		Thread t3 = new Thread(pr3);

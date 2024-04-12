@@ -5,7 +5,7 @@ package test0411;
  * 구동 클래스 구현하기
  */
 class PrintRunnable2 implements Runnable {
-	Printer ptr;
+	Printer ptr; // 공유객체
 	char ch;
 	PrintRunnable2(Printer ptr, char ch) {
 		this.ptr = ptr;
@@ -18,7 +18,7 @@ class PrintRunnable2 implements Runnable {
 		}
 	}
 }
-class Printer {
+class Printer { 
 	// 동기화 메서드
 	public synchronized void printChar(char ch) { // 스레드 lock 시작
 		for (int i=0;i<80;i++) {
@@ -29,10 +29,11 @@ class Printer {
 }
 public class Test2 {
 	public static void main(String[] args) {
-		Printer ptr = new Printer();
+		Printer ptr = new Printer(); // 모든 Runnable 객체의 공유객체
 		PrintRunnable2 pr21 = new PrintRunnable2(ptr,'A');
 		PrintRunnable2 pr22 = new PrintRunnable2(ptr,'B');
 		PrintRunnable2 pr23 = new PrintRunnable2(ptr,'C');
+//		Thread t1 = new Thread(new PrintRunnable2(ptr,'A')); // 이렇게하면 pr21... 변수 안만들어도됨
 		Thread t1 = new Thread(pr21);
 		Thread t2 = new Thread(pr22);
 		Thread t3 = new Thread(pr23);
