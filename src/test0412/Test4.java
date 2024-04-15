@@ -58,8 +58,10 @@ class Student {
 	public String toString() {
 		return name + ":국어(" + kor + "),영어(" + eng + "),수학(" + math + "),총점("
 				+getTotal()+"),평균("+String.format("%.2f", getTotal()/3.0)+")";
+//		return String.format("%s:국어(%d),영어(%d),수학(%d),총점(%d),평균(%.2f)",
+//	    		   name, kor, eng, math, getTotal(), getTotal() / 3.0);
 	}
-	
+	// 여기다가 compareTo 오버라이딩하면 기본 정렬방식을 재정의하는게 됨
 }
 public class Test4 {
 	public static void main(String[] args) {
@@ -75,7 +77,7 @@ public class Test4 {
 			System.out.println(s);
 		}
 		
-		// 총점 내림차순, 국어 내림차순,	영어 내림차순, 수학 내림차순
+		// 총점 내림차순, 국어 내림차순, 영어 내림차순, 수학 내림차순
 		Collections.sort(list,(l1,l2)->l2.getTotal()-l1.getTotal());
 		System.out.println("===총점 내림차순 정렬");
 		for (Student s:list) {
@@ -99,8 +101,5 @@ public class Test4 {
 		for (Student s:list) {
 			System.out.println(s);
 		}
-		
-		
 	}
-
 }

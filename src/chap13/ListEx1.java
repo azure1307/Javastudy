@@ -64,6 +64,7 @@ public class ListEx1 {
 		System.out.println(list2);
 		System.out.println();
 		
+		// new 예약어 사용해서 새로 만듦. 기존 list, list2와 연결 끊어짐
 		List<Integer> list3 = new ArrayList<>(list.subList(1, 4));
 		list.set(2, 200);
 		System.out.println(list);

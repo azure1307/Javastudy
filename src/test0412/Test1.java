@@ -40,38 +40,63 @@ public class Test1 {
 		r.setSeed(System.currentTimeMillis());	
 		
 		while (lotto.size()<6) {
-			lotto.add(r.nextInt(1000)+1);
+//			lotto.add(r.nextInt(1000)+1);
+			if (lotto.size() == 0) // 추첨번호없음. 3등부터 추첨
+				System.out.println("3등 복권 추첨합니다.");
+			else if (lotto.size() == 3) // 2등부터 추첨
+				System.out.println("2등 복권 추첨합니다.");
+			else if (lotto.size() == 5) // 1등 추첨
+				System.out.println("1등 복권 추첨합니다.");
+			int num = r.nextInt(1000) + 1; 
+//			boolean Set.add: 추가될 때만 true
+			if (lotto.add(num)) { // set에 추가된 경우만 화면에 출력
+				System.out.println(num);
+			}
 		}
-		System.out.println(lotto);
+//		System.out.println(lotto);
 		
 		
-		List<Integer> list = new ArrayList<>(lotto);
-		List<Integer> third = list.subList(0, 3);
-		List<Integer> second = list.subList(3, 5);
-		int first = list.get(5);
-		System.out.println("3등 복권 추첨합니다.");
-		for (Integer i:third) {
-			System.out.println(i);
+		List<Integer> list = new ArrayList<>(lotto); // Set을 List로 변환
+		for(int i=list.size()-1;i>=0;i--) { // 역순 출력(1등부터 출력)
+			if(i == list.size()-1)
+				System.out.println("1등:" + list.get(i));
+			else if (i == list.size()-2)
+				System.out.print("2등:" + list.get(i) + ",");
+			else if (i< list.size()-2 && i>=3)
+				System.out.print(list.get(i) + ",");
+			else if(i==2) 
+				System.out.print("\n3등:" + list.get(i)+ ",");
+			else
+				System.out.print(list.get(i)+ ",");
 		}
-		System.out.println("2등 복권 추첨합니다.");
-		for (Integer i:second) {
-			System.out.println(i);
-		}
-		System.out.println("1등 복권 추첨합니다.");
-		System.out.println(first);
 		
-		Collections.sort(third);
-		Collections.sort(second);
-		System.out.println("*** 복권 추첨 결과 ***");
-		System.out.print("1등:"+first+"\n");
-		System.out.print("2등:");
-		for (Integer i:second) {
-			System.out.print(i+",");
-		}
-		System.out.print("\n3등:");
-		for (Integer i:third) {
-			System.out.print(i+",");
-		}
+//		List<Integer> third = list.subList(0, 3);
+//		List<Integer> second = list.subList(3, 5);
+//		int first = list.get(5);
+		
+//		System.out.println("3등 복권 추첨합니다.");
+//		for (Integer i:third) {
+//			System.out.println(i);
+//		}
+//		System.out.println("2등 복권 추첨합니다.");
+//		for (Integer i:second) {
+//			System.out.println(i);
+//		}
+//		System.out.println("1등 복권 추첨합니다.");
+//		System.out.println(first);
+		
+//		Collections.sort(third);
+//		Collections.sort(second);
+//		System.out.println("*** 복권 추첨 결과 ***");
+//		System.out.print("1등:"+first+"\n");
+//		System.out.print("2등:");
+//		for (Integer i:second) {
+//			System.out.print(i+",");
+//		}
+//		System.out.print("\n3등:");
+//		for (Integer i:third) {
+//			System.out.print(i+",");
+//		}
 /*
  * *** 복권 추첨 결과 *** <- 여기는 정렬
 	1등:797,

@@ -9,6 +9,7 @@ import java.util.Set;
  *   List: 순서 유지. 인덱스 사용할 수 있음. 가변배열
  *   	   구현클래스 => ArrayList, Vector, LinkedList
  *    Set: 중복 불가, 인덱스 사용할 수 없음. 
+ *    	   집합을 구현함
  *   	   구현 클래스
  *   		  HashSet: 중복불가. 순서모름
  *   		  TreeSet: 중복불가. 정렬함

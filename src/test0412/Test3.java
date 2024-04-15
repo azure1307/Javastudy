@@ -30,31 +30,36 @@ public class Test3 {
 			try {
 				int num = sc.nextInt();
 				if (num == 0) break;
-				// 자연수일 경우
-				if (num%2==1) {
+				// 홀수인 자연수만 추가(2로 나눈 나머지 1 && 0보다 큼)
+				if (num%2==1 && num>0) {
 					list.add(num);
+					sum += num;
 				}
 			} catch (InputMismatchException e) {
 				// 근데 이러면 마지막 아닌 위치에 문자열넣으면 안댐...
-				break;
+				// break;가 아니라 sc.next(); 사용!!
+				sc.next();
 			}
 		}
-		for (Integer i:list) {
-			sum += i;
-		}
-		// 중간값이 이상함..
-		double middle = 0;
-		if (list.size()%2==1) {
-			middle = list.get(list.size()/2);
-		} else {
-			middle = (list.get((list.size()/2)-1)+list.get(list.size()/2))/2.0;
-		}
+//		for (Integer i:list) {
+//			sum += i;
+//		}
+		
 		System.out.println(list+"의 합:"+sum);
 		System.out.println("홀수의 최대값:"+Collections.max(list));
 		System.out.println("홀수의 최소값:"+Collections.min(list));
 		System.out.println("홀수의 최대값 위치:"+list.indexOf(Collections.max(list)));
 		System.out.println("홀수의 최소값 위치:"+list.indexOf(Collections.min(list)));
 		System.out.println("입력된 홀수 목록:"+list);
+		
+		// 중간값이 이상함.. -> 중간값 구하려면 꼭 정렬해야함!!
+		Collections.sort(list);
+		double middle = 0;
+		if (list.size()%2==1) {
+			middle = list.get(list.size()/2);
+		} else {
+			middle = (list.get(list.size()/2-1)+list.get(list.size()/2))/2.0;
+		}
 		System.out.println("중간값:"+middle);
 	}
 /*

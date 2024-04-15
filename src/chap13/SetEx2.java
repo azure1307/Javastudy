@@ -54,8 +54,8 @@ public class SetEx2 {
 		set.add(new StringBuffer("abcd"));
 		set.add(new StringBuffer("abcd"));
 		System.out.println(set);
-		set.add(new StringBuilder("abcde"));
-		set.add(new StringBuilder("abcde"));
+		set.add(new StringBuilder("abcde").toString());
+		set.add(new StringBuilder("abcde").toString());
 		System.out.println(set);
 	}
 }
