@@ -2,10 +2,12 @@ package test0415;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 class EastCard {
 	final int num;
@@ -95,30 +97,64 @@ public class Test2 {
 		CardDeck deck = new CardDeck();
 		deck.shuffle();
 		
-		System.out.println("게임할 인원수를 입력하세요(최대:10)");
+//		System.out.println("게임할 인원수를 입력하세요(최대:10)");
 		Scanner sc = new Scanner(System.in);
-		int count = sc.nextInt();
-		String[] names = new String[10];
-		for (int i=0;i<count;i++) {
-			names[i] = (i+1)+"번";
-		}
+		int count = 0;
+		
+		while(count < 2 || count > 10) { 
+			   System.out.println("게임할 인원수를 입력하세요(최소:2,최대:10)");
+			   count = sc.nextInt();
+		}   
+		
+//		String[] names = new String[10];
+//		for (int i=0;i<count;i++) {
+//			names[i] = (i+1)+"번";
+//		}
 		
 		// 플레이어 생성
 		List<Player> players = new ArrayList<>();
 		for (int i=0;i<count;i++) {
-			players.add(new Player(names[i],deck.pick(0),deck.pick(0)));
+			players.add(new Player((i+1)+"번",deck.pick(0),deck.pick(0)));
 			System.out.println(players.get(i));
 		}
-		
-		// 정렬
-		Collections.sort(players, (p1,p2)->p2.getScore()-p1.getScore());
-		System.out.println(players);
 		System.out.println();
 		
-		// count 5라고 가정
-		int cnt = 0;
-		while (true) {
-			if (players.size()==0) break;
+		// 정렬(점수 내림차순)
+		Collections.sort(players, (p1,p2)->p2.getScore()-p1.getScore());
+		
+		// 선생님 코드
+		System.out.println("등수:");
+		int i=0;
+		for(Player g : players) {
+		   System.out.println(++i + "등:" + g);
+		}
+		System.out.println();
+		
+ 		System.out.println("동점자 등수 : ");
+ 		// rank: <점수, 점수가 똑같은 player List>
+ 		// TreeMap이라 점수 오름차순 정렬
+		Map<Integer,List<Player>> rank = new TreeMap<>(Comparator.reverseOrder());
+		for(Player g : players) {
+			List<Player> eqrank = rank.get(g.getScore());
+			if(eqrank == null) {
+				eqrank = new ArrayList<>();
+			}
+			eqrank.add(g);
+			rank.put(g.getScore(), eqrank); // 기존의 점수가 있는 경우 수정
+			System.out.println("eqrank:"+eqrank);
+			System.out.println("rank:"+rank);
+		}
+		System.out.println();
+		
+		int r = 0;
+		for(List<Player> l : rank.values()) {
+			for(Player g : l)
+				System.out.println((r+1) + "등:" + g);
+			r += l.size(); // 동점자가 두명이면 1등, 1등 -> 3등 -> 4등...
+			
+//		int cnt = 0;
+//		while (true) {
+//			if (players.size()==0) break;
 //			for (int i=0;i<count;i++) { // i는 0,1,2,3,4
 //				if (players.get(i)==players.get(i+1)) { // 0-1, 1-2, 2-3, 3-4, 
 //					System.out.print((cnt+1)+"등:"+players.remove(0));
@@ -129,9 +165,9 @@ public class Test2 {
 //					cnt++;					
 //				}
 //			}
-			System.out.print((cnt+1)+"등:"+players.remove(0));
-			System.out.println();
-			cnt++;					
+//			System.out.print((cnt+1)+"등:"+players.remove(0));
+//			System.out.println();
+//			cnt++;					
 		}
 	}
 }

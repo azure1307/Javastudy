@@ -1,0 +1,10 @@
+6: * TODO 1. InputStream 예제
+7: * 
+8: * 입출력 스트림 : 데이터의 이동 통로. 단방향(입력, 출력 구분)
+9: * 
+10: * 입력 스트림
+11: *    바이트형 : 1byte 단위로 읽기. 동영상, 이미지, 텍스트 등의 데이터 처리(비정형 데이터) -> InputStream
+12: *    		   하위 클래스 : FileInputStream, ObjectInputStream...
+13: *    문자형 : 2byte(1char) 단위로 읽기. 텍스트데이터 처리 					   -> Reader
+14: *    		   하위 클래스 : FileReader, StringReader...
+15: * 출력 스트림

@@ -54,6 +54,7 @@ public class Test1 {
 			if (combi.get(input)==null) {
 				System.out.println(input+"의 궁합음식이 등록되어 있지 않습니다. 등록하시겠습니까?");
 				String isEnroll = sc.next();
+//				if (isEnroll.equalsIgnoreCase("y")) { // 대소문자 무시
 				if (isEnroll.equals("y")) {
 					System.out.println(input+"의 궁합음식을 등록하세요");
 					String input2 = sc.next();
@@ -66,6 +67,7 @@ public class Test1 {
 		
 		Set<Map.Entry<String, String>> entrys = combi.entrySet();
 		for (Map.Entry<String, String> e : entrys) {
+//		for (Map.Entry<String, String> e : combi.entrySet()) { // entrys 안만들어도됨
 			System.out.print(e.getKey()+":"+e.getValue());
 			System.out.println();
 		}
