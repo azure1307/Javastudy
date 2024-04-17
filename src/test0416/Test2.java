@@ -2,7 +2,9 @@ package test0416;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -34,23 +36,39 @@ exit
 public class Test2 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-		String name = null;
-		System.out.println("파일명을 입력하세요");
-		while ((name=stdin.readLine()) != null) {
+		while (true) {
+			System.out.println("파일명을 입력하세요");
+			String name = stdin.readLine();
 			if (name.equals("exit")) break;
-			try {
-				BufferedReader br = new BufferedReader(new FileReader(name));
-				String data = br.readLine();
+			
+			String newName = null;
+			if (name.indexOf('.') < 0) { // 확장자 없는 경우
+				newName = name + ".bak";
+			} else { // 확장자 있는 경우
 				// .이 나온 인덱스값 -> 그 값이 나온 위치까지 자름 -> + .bak
-				String newName = name.substring(0, name.indexOf('.'))+".bak";
-//				System.out.println(newName);
-				BufferedWriter bw = new BufferedWriter(new FileWriter(newName));
-				bw.write(data);
-				System.out.println(name+"=>"+newName+" 복사완료");
-				bw.close();
-				br.close();
+				newName = name.substring(0, name.indexOf('.'))+".bak";
+			}
+			System.out.println(newName);
+
+			FileInputStream fis = null;
+			FileOutputStream fos = null;
+			try {
+				fis = new FileInputStream(name);
+				fos = new FileOutputStream(newName);
+				byte[] buf = new byte[8096];
+				int len = 0;
+				while ((len = fis.read(buf)) != -1) {
+					fos.write(buf, 0, len);
+				}
+				System.out.println(name + "=>" + newName + " 복사완료");
 			} catch (FileNotFoundException e) {
 				System.out.println("복사할 파일이 없습니다.");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (fos != null)	fos.flush();
+				if (fis != null)	fis.close();
+				if (fos != null)    fos.close();
 			}
 		}
 		stdin.close();

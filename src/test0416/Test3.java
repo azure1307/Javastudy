@@ -1,7 +1,6 @@
 package test0416;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 /*
@@ -19,14 +18,18 @@ CA FE BA BE 00 00 00 34 00 8E 07 00 02 01 00 17
 
 public class Test3 {
 	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader("bin/chap14/InputStreamEx1.class"));
-		String data = null;
-		while ((data=br.readLine()) != null) {
+		FileInputStream fis = new FileInputStream("bin/chap14/InputStreamEx1.class");
+		byte[] buf = new byte[16];
+		int len;
+		while ((len=fis.read(buf)) != -1) {
+			for (int i=0;i<len;i++) {
+				System.out.printf(" %02X",buf[i]);
+			}
+			System.out.println();
 			// data가 너무 많아서 그런것같기도..
-			int num = Integer.parseInt(data,16);
+//			int num = Integer.parseInt(data,16);
 //			int num = Integer.parseInt("FF",16);
-			System.out.println(num);
+//			System.out.println(num);
 		}
-		br.close();
 	}
 }

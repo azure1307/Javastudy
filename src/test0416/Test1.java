@@ -20,22 +20,26 @@ public class Test1 {
 	public static void main(String[] args) throws IOException {
 //		Reader in = new InputStreamReader(System.in);
 		BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("파일명을 입력하세요.");
-		String name = stdin.readLine();
-//		System.out.println(name);
-		
-		FileInputStream fis;
-		try {
-			fis = new FileInputStream(name);
-			int data = 0;
-			byte[] buf = new byte[fis.available()];
-			while ((data=fis.read(buf)) != -1) {
-				System.out.print(new String(buf,0,data));
+		while (true) {		
+			System.out.println("파일명을 입력하세요.");
+			String name = stdin.readLine();
+//			System.out.println(name);
+			if (name.equals("exit")) break;
+			
+			try {
+				FileInputStream fis = new FileInputStream(name);
+				int len = 0;
+				// fis.available(): 읽을 수 있는 바이트수
+//				System.out.println("fis.available():"+fis.available());
+				byte[] buf = new byte[fis.available()];
+				// fis.read(buf): 읽은 내용 버퍼에 저장. 실제로 읽은 바이트수 리턴
+				while ((len=fis.read(buf)) != -1) {
+					System.out.print(new String(buf,0,len));
+				}
+				fis.close();
+			} catch (FileNotFoundException e) {
+				System.out.println("해당 파일이 없습니다.");
 			}
-			fis.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("해당 파일이 없습니다.");
 		}
-		stdin.close();
 	}
 }
