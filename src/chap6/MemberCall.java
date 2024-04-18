@@ -26,22 +26,26 @@ public class MemberCall {
 	int iv2 = iv1;			//인스턴스변수
 	int iv3 = cv1;			//MemberCall 변수 생성시 iv3에 값 부여
 //	static int cv3 = iv1;	//cv3은 로드됨. 근데 iv1는 객체생성돼야 사용가능해서 에러
-	static int cv3 = new MemberCall().iv1;	//객체화 필요. 참고로 얘는 참조변수가 없어서 걍 한 번 쓰고버림,,
+	static int cv3 = new MemberCall().iv1;	//객체화 필요. 참고로 얘는 참조변수가 없어서 걍 한 번 쓰고버림
 	void method1() {		//인스턴스메서드
 		System.out.println("cv1+cv2="+(cv1+cv2));
 		System.out.println("iv1+iv2="+(iv1+iv2));
+		System.out.println();
 	}
 	static void method2() {	//클래스메서드
 		System.out.println("cv1+cv2="+(cv1+cv2));
 //		System.out.println("iv1+iv2="+(iv1+iv2)); //클래스메서드에서 인스턴스변수 직접 호출x!! 객체화 필요
 		MemberCall m = new MemberCall();
-		System.out.println("iv1+iv2="+(m.iv1+m.iv2));		
+		System.out.println("iv1+iv2="+(m.iv1+m.iv2));
+		System.out.println();
 	}
 	void method3() { //인스턴스메서드
+		System.out.println("method3 실행");
 		method1(); 	//인스턴스메서드
 		method2();	//클래스메서드. 이미 준완
 	}
 	static void method4() { //클래스메서드
+		System.out.println("method4 실행");
 //		method1();	//인스턴스메서드.
 		new MemberCall().method1();	//인스턴스메서드.
 		method2();	//클래스메서드.

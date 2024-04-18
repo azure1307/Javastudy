@@ -12,10 +12,10 @@ class Outer {
 		// 람다방식으로 객체 생성
 		LambdaInterface f = () -> {
 			// Outer.this.iv : 외부클래스의 멤버 접근
-			System.out.println("Outer.this.iv="+Outer.this.iv);
+			System.out.println("Outer.this.iv="+Outer.this.iv); // 10
 			// this.iv : 객체의 iv값에 접근
-			System.out.println("this.iv="+this.iv);
-			System.out.println("iv="+iv);
+			System.out.println("Outer.iv="+this.iv); // 10
+			System.out.println("iv="+iv); // 20
 		};
 		f.method();
 		
@@ -25,10 +25,10 @@ class Outer {
 			@Override
 			public void method() {				
 				// Outer.this.iv : 외부클래스의 멤버 접근
-				System.out.println("Outer.this.iv="+Outer.this.iv);
+				System.out.println("Outer.this.iv="+Outer.this.iv); // 10
 				// this.iv : 내부클래스의 멤버 접근
-				System.out.println("this.iv="+this.iv); // 30
-				System.out.println("iv="+iv);
+				System.out.println("Outer.iv="+this.iv); // 30
+				System.out.println("iv="+iv); // 30
 			}
 		};
 		f2.method();

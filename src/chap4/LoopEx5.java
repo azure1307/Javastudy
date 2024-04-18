@@ -1,6 +1,6 @@
 package chap4;
 /*
- * break	: switch,반복문(for,while,dowhile) 밖으로 이동
+ * break	: switch,반복문(for,while,do while) 밖으로 이동
  * continue : 반복문의 head로 이동
  */
 public class LoopEx5 {

@@ -35,10 +35,11 @@ public class ArrEx3 {
 			System.out.println();	
 			
 			//lotto 번호 정렬하기: 
-			for (int i=0;i<lotto.length;i++) {
-				//bubble 정렬
-				//length-1-i: 이미 마지막에 제일 큰 수가 있을거니까 마지막 케이스 빼고 진행
-				for (int j=0;j<lotto.length-1-i;j++) {
+			for (int i=0;i<lotto.length;i++) { // lotto.length()=6
+				// bubble 정렬 : 두 수를 비교해서 (2,1)이었으면 (1,2)로 자리 교체
+				// length-1-i: 이미 마지막에 제일 큰 수가 있을거니까 마지막 케이스 빼고 진행
+				// i,j : 0,0~4 / 1,0~3 / 2,0~2 / 3,0~1 / 4,0
+				for (int j=0;j<lotto.length-1-i;j++) {  
 					if (lotto[j] > lotto[j+1]) {
 						int tmp = lotto[j];
 						lotto[j] = lotto[j+1];

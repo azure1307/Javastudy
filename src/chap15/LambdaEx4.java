@@ -36,6 +36,12 @@ class Student {
 	public String getMajor() {
 		return major;
 	}
+	@Override
+	public String toString() {
+		return "[name=" + name + ", eng=" + eng + ", math=" + math + ", major="
+				+ major + "]";
+	}
+	
 }
 public class LambdaEx4 {
 	static List<Student> list = Arrays.asList(
@@ -76,6 +82,7 @@ public class LambdaEx4 {
 		printTot(s->s.getMath()+s.getEng());
 	}
 	
+	// Student 객체를 받아서 int 타입으로 리턴. 뭔 int인지는 람다식에서 정의
 	private static void printTot(ToIntFunction<Student> f) {
 		int sum = 0;
 		for (Student s : list) {
@@ -84,7 +91,7 @@ public class LambdaEx4 {
 		System.out.println(sum);
 	}
 
-	// Student 객체를 String 타입으로 리턴
+	// Student 객체를 받아서 String 타입으로 리턴. 뭔 String인지는 람다식에서 정의
 	static void printString(Function<Student, String> f) {
 		for (Student s : list) {
 			System.out.print(f.apply(s)+",");

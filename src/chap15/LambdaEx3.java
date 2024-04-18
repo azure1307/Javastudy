@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 
 /*
  * Supplier 관련 인터페이스
- * T getXXX() : 매개변수는 없고 리턴값만 존재
+ * T getXXX() : 매개변수는 없고 리턴값만 존재 - 공급만 함
  * 
  * Supplier<T> : T get() : T형의 리턴값 전달
  * BooleanSupplier : boolean getAsBoolean()

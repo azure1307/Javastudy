@@ -21,10 +21,9 @@ class Car {
 	//인스턴스 변수
 	String color;
 	int number;
-	//static: 객체 생성하기 전부터 메모리할당
 	//클래스 변수
-	static int width = 200;
-	static int height = 120;
+	static int width = 200; //static: 객체 생성하기 전부터, 클래스가 로드될 때 메모리할당
+	static int height = 120; //static: 객체 생성하기 전부터, 클래스가 로드될 때 메모리할당
 	public String toString() {
 		return color + ":" + number + "(" + width + "," + height + ")";
 	}

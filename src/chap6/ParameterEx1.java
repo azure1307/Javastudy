@@ -25,7 +25,7 @@ public class ParameterEx1 {
 	}
 
 	//실제 v.val 값 사용
-	//Value v -> 메인에서 만들어놓은 v와 같은 객체를 참조
+	//Value v -> 메인에서 만들어놓은 v와 같은 객체를 참조 <<
 	private static void change2(Value v) {
 		v.val += 100;
 		System.out.println("change2 함수 내부: " + v.val);		

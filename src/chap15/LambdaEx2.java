@@ -8,7 +8,7 @@ import java.util.function.IntConsumer;
  * Java API의 FunctionalInterface 예제
  * 
  * 1. Consumer 관련 인터페이스
- *    accept() 추상 메서드 : 매개변수 있고, 리턴값은 없는 메서드
+ *    accept() 추상 메서드 : 매개변수 있고, 리턴값은 없는 메서드 - 소비만 함
  *    
  *    Consumer<T> : void accept(T)
  *    BiConsumer<T, U> : void accept(T, U)
