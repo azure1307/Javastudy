@@ -29,6 +29,9 @@ class SmartPhone extends Phone {
 }
 public class PhoneEx1 {
 	public static void main(String[] args) {
+		
+//		SmartPhone sp2 = (SmartPhone) new Phone();
+//		Phone p = new Object(); // Object는 power()가 없어서 p.power() 할 수 없음 
 		SmartPhone sp = new SmartPhone();
 		sp.power = true;
 		sp.send();

@@ -20,8 +20,8 @@ public class ArraysEx1 {
 			System.out.print(s+",");
 		}
 		System.out.println();
-		System.out.println(arr1);
-		System.out.println(Arrays.toString(arr1));
+		System.out.println("arr1:"+arr1);
+		System.out.println("Arrays.toString(arr1):"+Arrays.toString(arr1));
 		System.out.println();
 		
 		// arr1 배열의 1번, 2번 인덱스의 값을 홍길동전으로 변경

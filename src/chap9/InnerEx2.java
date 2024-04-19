@@ -62,6 +62,7 @@ public class InnerEx2 {
 		System.out.println("Outer2.InstanceInner.iiv = "+oii.iiv2);
 		System.out.println();
 		
+		// 시험에 나왔던 부분
 		Outer2.StaticInner osi = new Outer2.StaticInner();
 		System.out.println("osi.siv = "+osi.siv);
 		System.out.println("osi.siv2 = "+osi.siv2);

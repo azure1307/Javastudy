@@ -29,5 +29,6 @@ public class VarEx5 {
 		
 		str = "1" + false;
 		System.out.println(str);
+		System.out.printf("%s",str);
 	}
 }

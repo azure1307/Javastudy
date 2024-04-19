@@ -3,7 +3,7 @@ package chap11;
  * Object 클래스: toString 메서드
  * toString: 객체를 문자열로 변환해주는 메서드
  * 			 참조변수 이름으로 출력하면 자동으로 호출되는 메서드
- * 			 Object 클래스에서는 '클래스명@16진수해쉬코드' 로 구현함
+ * 			 Object 클래스에서는 '클래스명@16진수해시코드' 로 구현함
  */
 class Card {
 	String kind;

@@ -17,5 +17,17 @@ public class StringBuilderEx1 {
 		// 그래서 비교하려면 toString() 써서 문자열로 변환 후 equals()로 비교해야 한다
 		System.out.println("sb1.toString().equals(sb2.toString()) : "
 		 +(sb1.toString().equals(sb2.toString())));
+		
+		// 시험에서 나왔던 부분
+		StringBuffer a = new StringBuffer("A");
+		StringBuffer b = new StringBuffer("B");
+		operate(a, b);
+		System.out.println(a + "," + b);
+	}
+	static void operate(StringBuffer x, StringBuffer y) {
+		x.append(y);
+		System.out.println("x:"+x);
+		y = x;
+		System.out.println("y:"+y);
 	}
 }

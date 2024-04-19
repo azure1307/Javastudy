@@ -17,7 +17,7 @@ import java.util.Set;
  * 						LinkedList
  * Map 인터페이스 : 객체를 구분할 수 있는 Key 값을 가지는 (Key, Value) 쌍의 모임
  * 				 HashMap : 순서 모름. 
- * 				 HashTable : 구버전의 클래스. 구버전의 메서드와 혼합
+ * 				 HashTable : 구버전의 클래스. 구버전의 메서드와 혼합 // 시험에 나왔던 부분
  * 				 TreeMap : Key를 기준으로 정렬됨
  * 
  * 주요 메서드

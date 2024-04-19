@@ -3,6 +3,9 @@ package chap12;
  * Thread 생성
  * 1. Thread 클래스를 상속받기
  * 2. run() 오버라이딩 : 스레드가 실행해야 하는 기능
+ * 
+ * 시험에 나온 부분
+ * run()은 스레드가, start()는 메인 메서드에서 생성된 스레드 객체의 상태를 Runnable로 변경
  */
 class Thread1 extends Thread {
 	Thread1(String name) {
@@ -24,7 +27,7 @@ public class ThreadEx1 {
 		System.out.println("main 스레드 시작");
 		Thread t1 = new Thread1("First"); // new 상태(객체생성 상태)
 		Thread t2 = new Thread1("Second"); // new 상태(객체생성 상태)
-		t1.start(); // t1, Runnable 상태
+		t1.start(); // t1을 Runnable 상태로 변경
 		/*
 		 * start 메서드 기능
 		 * 1. 스택영역을 병렬화시킴

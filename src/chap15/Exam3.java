@@ -28,9 +28,21 @@ public class Exam3 {
 				new Member("홍길동",1,30), new Member("장옥정",2,20),
 				new Member("이몽룡",1,45), new Member("성춘향",2,27));
 		System.out.println("남자나이의 평균 출력하기");
+		double ageAvg = list.stream().filter(m->m.getGender()==1)
+				.mapToInt(Member::getAge).average().getAsDouble();
+		System.out.println("남자나이의 평균:"+ageAvg);
+		
 		System.out.println("여자나이의 평균 출력하기");
+		ageAvg = list.stream().filter(m->m.getGender()==2)
+				.mapToInt(Member::getAge).average().getAsDouble();
+		System.out.println("여자나이의 평균:"+ageAvg);
+		
 		System.out.println("남자회원의 이름 출력하기");
+		list.stream().filter(m->m.getGender()==1)
+		.map(Member::getName).forEach(s->System.out.print(s+" "));
 		System.out.println("여자회원의 이름 출력하기");
+		list.stream().filter(m->m.getGender()==2)
+		.map(Member::getName).forEach(s->System.out.print(s+" "));
 	}
 
 }
